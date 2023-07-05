@@ -1,14 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--Scroll-->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/moviesScrollLay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <!--Container-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--Top movies lay-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/topMoviesLay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+                <!--Top movies-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/topMoviesRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--Indicator-->
+                <me.relex.circleindicator.CircleIndicator2
+                    android:id="@+id/topMoviesIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    app:layout_constraintTop_toBottomOf="@id/topMoviesRecycler" />
 
-</FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
