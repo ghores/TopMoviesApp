@@ -38,14 +38,13 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //InitViews
         binding.apply {
-
             //Click
             submitBtn.setOnClickListener { view ->
                 val name = nameEdt.text.toString()

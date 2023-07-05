@@ -9,7 +9,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.topmovies.R
 import com.example.topmovies.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     //Binding
     private lateinit var binding: ActivityMainBinding
@@ -27,10 +29,10 @@ class MainActivity : AppCompatActivity() {
             bottomNav.setupWithNavController(navController)
             //Show bottom navigation
             navController.addOnDestinationChangedListener { _, destination, _ ->
-                
-                if (destination.id == R.id.splashFragment){
+
+                if (destination.id == R.id.splashFragment || destination.id == R.id.registerFragment) {
                     bottomNav.visibility = View.GONE
-                }else {
+                } else {
                     bottomNav.visibility = View.VISIBLE
                 }
 

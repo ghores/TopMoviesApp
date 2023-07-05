@@ -40,7 +40,7 @@ class SplashFragment : Fragment() {
                 if (it.isEmpty()){
                     findNavController().navigate(R.id.action_splashFragment_to_registerFragment)
                 }else{
-                    findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                    findNavController().navigate(R.id.actionToHome)
                 }
             }
 
