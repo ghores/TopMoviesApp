@@ -34,6 +34,35 @@
                     app:layout_constraintTop_toBottomOf="@id/topMoviesRecycler" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--Genre-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/genresLay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintTop_toBottomOf="@id/topMoviesLay">
+                <!--Title-->
+                <TextView
+                    android:id="@+id/genresTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10mdp"
+                    android:text="@string/genres"
+                    android:textColor="@color/crayola"
+                    android:textSize="@dimen/_12font_mdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--Recycler-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/genresRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    app:layout_constraintTop_toBottomOf="@id/genresTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
