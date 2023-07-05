@@ -24,6 +24,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
         }
     }
 
+
     fun loadGenresList() = viewModelScope.launch {
         val response = repository.genresList()
         if (response.isSuccessful) {
