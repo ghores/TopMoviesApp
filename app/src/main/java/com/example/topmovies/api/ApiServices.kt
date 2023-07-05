@@ -9,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiServices {
 
@@ -23,4 +24,7 @@ interface ApiServices {
 
     @GET("movies")
     suspend fun moviesLastList(): Response<ResponseMoviesList>
+
+    @GET("movies")
+    suspend fun searchMovies(@Query("q") name: String): Response<ResponseMoviesList>
 }
