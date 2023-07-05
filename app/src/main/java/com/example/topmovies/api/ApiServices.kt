@@ -20,4 +20,7 @@ interface ApiServices {
 
     @GET("genres")
     suspend fun genresList(): Response<ResponseGenresList>
+
+    @GET("movies")
+    suspend fun moviesLastList(): Response<ResponseMoviesList>
 }
