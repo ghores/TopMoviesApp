@@ -18,6 +18,6 @@ Technologies and Libraries Used :
 
 # Screenshot
 
-<img src="images/topmovies1.png" width="250"/> <img src="images/topmovies2.png" width="250"/>
+<img src="images/topmovies1.png" width="250"/>        <img src="images/topmovies2.png" width="250"/>
 
-<img src="images/topmovies3.png" width="250"/> <img src="images/topmovies4.png" width="250"/>
+<img src="images/topmovies3.png" width="250"/>        <img src="images/topmovies4.png" width="250"/>
