@@ -14,6 +14,7 @@ Technologies and Libraries Used :
 * DiffUtil
 * RecyclerView
 * DataStore Preferences
+* Navigation Components
 * xml
 
 # Screenshot
