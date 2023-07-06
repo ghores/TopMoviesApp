@@ -2,6 +2,7 @@ package com.example.topmovies.ui.home.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.OnReceiveContentListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -46,8 +47,19 @@ class LastMoviesAdapter @Inject constructor() :
                     crossfade(true)
                     crossfade(800)
                 }
+                //Click
+                root.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(item)
+                    }
+                }
             }
         }
+    }
+
+    private var onItemClickListener: ((ResponseMoviesList.Data) -> Unit)? = null
+    fun setOnItemClickListener(listener: (ResponseMoviesList.Data) -> Unit) {
+        onItemClickListener = listener
     }
 
     fun setData(data: List<ResponseMoviesList.Data>) {

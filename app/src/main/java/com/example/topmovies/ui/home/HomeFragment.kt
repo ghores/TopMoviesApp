@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.topmovies.databinding.FragmentHomeBinding
@@ -86,6 +87,11 @@ class HomeFragment : Fragment() {
                     lastMoviesAdapter
                 )
 
+            }
+            //Click
+            lastMoviesAdapter.setOnItemClickListener {
+                val direction = HomeFragmentDirections.actionToDetail(it.id)
+                findNavController().navigate(direction)
             }
             //Loading
             viewModel.loading.observe(viewLifecycleOwner) {

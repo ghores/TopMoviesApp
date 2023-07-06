@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.topmovies.R
 import com.example.topmovies.databinding.FragmentSearchBinding
+import com.example.topmovies.ui.home.HomeFragmentDirections
 import com.example.topmovies.ui.home.adapter.LastMoviesAdapter
 import com.example.topmovies.utils.initRecycler
 import com.example.topmovies.utils.showInvisible
@@ -50,6 +52,11 @@ class SearchFragment : Fragment() {
             viewModel.moviesList.observe(viewLifecycleOwner) {
                 searchAdapter.setData(it.data)
                 moviesRecycler.initRecycler(LinearLayoutManager(requireContext()), searchAdapter)
+            }
+            //Click
+            searchAdapter.setOnItemClickListener {
+                val direction = SearchFragmentDirections.actionToDetail(it.id)
+                findNavController().navigate(direction)
             }
             //Loading
             viewModel.loading.observe(viewLifecycleOwner) {

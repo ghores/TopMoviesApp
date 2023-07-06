@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.topmovies.R
 import com.example.topmovies.databinding.FragmentFavoriteBinding
+import com.example.topmovies.ui.home.HomeFragmentDirections
 import com.example.topmovies.utils.initRecycler
 import com.example.topmovies.utils.showInvisible
 import com.example.topmovies.viewmodel.FavoriteViewModel
@@ -47,6 +49,11 @@ class FavoriteFragment : Fragment() {
                     LinearLayoutManager(requireContext()),
                     favoriteAdapter
                 )
+            }
+            //Click
+            favoriteAdapter.setOnItemClickListener {
+                val direction = FavoriteFragmentDirections.actionToDetail(it.id)
+                findNavController().navigate(direction)
             }
             //Empty
             viewmodel.empty.observe(viewLifecycleOwner) {

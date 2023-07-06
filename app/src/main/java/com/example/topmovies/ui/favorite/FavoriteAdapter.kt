@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.topmovies.databinding.ItemHomeMoviesLastBinding
 import com.example.topmovies.db.MovieEntity
+import com.example.topmovies.models.home.ResponseMoviesList
 import javax.inject.Inject
 
 class FavoriteAdapter @Inject constructor() :
@@ -45,10 +46,19 @@ class FavoriteAdapter @Inject constructor() :
                     crossfade(true)
                     crossfade(800)
                 }
+                //Click
+                root.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(item)
+                    }
+                }
             }
         }
     }
-
+    private var onItemClickListener: ((MovieEntity) -> Unit)? = null
+    fun setOnItemClickListener(listener: (MovieEntity) -> Unit) {
+        onItemClickListener = listener
+    }
     fun setData(data: List<MovieEntity>) {
         val moviesDiffUtil = MoviesDiffUtils(moviesList, data)
         val diffUtils = DiffUtil.calculateDiff(moviesDiffUtil)
