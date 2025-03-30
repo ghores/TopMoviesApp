@@ -15,7 +15,7 @@ Technologies and Libraries Used :
 * RecyclerView
 * DataStore Preferences
 * Navigation Components
-* xml
+* Xml
 
 # Screenshot
 
