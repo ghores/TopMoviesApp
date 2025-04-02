@@ -1,4 +1,4 @@
-# TopMovies App with kotlin **xml**
+# TopMovies App With Kotlin
 
 The application works with api  " http://moviesapi.ir "
 
@@ -15,7 +15,7 @@ Technologies and Libraries Used :
 * RecyclerView
 * DataStore Preferences
 * Navigation Components
-* xml
+* Xml
 
 # Screenshot
 
