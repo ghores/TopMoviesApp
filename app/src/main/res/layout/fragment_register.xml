@@ -71,10 +71,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEdt"
-            android:inputType="textPassword"
             style="@style/TextViewLightStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:textSize="@dimen/_14font_mdp" />
 
     </com.google.android.material.textfield.TextInputLayout>

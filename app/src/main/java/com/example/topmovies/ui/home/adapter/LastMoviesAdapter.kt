@@ -2,7 +2,6 @@ package com.example.topmovies.ui.home.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.OnReceiveContentListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,19 +10,15 @@ import com.example.topmovies.databinding.ItemHomeMoviesLastBinding
 import com.example.topmovies.models.home.ResponseMoviesList
 import javax.inject.Inject
 
-class LastMoviesAdapter @Inject constructor() :
-    RecyclerView.Adapter<LastMoviesAdapter.ViewHolder>() {
-
+class LastMoviesAdapter @Inject constructor() : RecyclerView.Adapter<LastMoviesAdapter.ViewHolder>() {
     //Binding
     private lateinit var binding: ItemHomeMoviesLastBinding
     private var moviesList = emptyList<ResponseMoviesList.Data>()
+    private var onItemClickListener: ((ResponseMoviesList.Data) -> Unit)? = null
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): LastMoviesAdapter.ViewHolder {
-        binding =
-            ItemHomeMoviesLastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LastMoviesAdapter.ViewHolder {
+        binding = ItemHomeMoviesLastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder()
     }
 
@@ -35,7 +30,6 @@ class LastMoviesAdapter @Inject constructor() :
     override fun getItemCount() = moviesList.size
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
-
         @SuppressLint("SetTextI18n")
         fun bindItems(item: ResponseMoviesList.Data) {
             binding.apply {
@@ -57,7 +51,6 @@ class LastMoviesAdapter @Inject constructor() :
         }
     }
 
-    private var onItemClickListener: ((ResponseMoviesList.Data) -> Unit)? = null
     fun setOnItemClickListener(listener: (ResponseMoviesList.Data) -> Unit) {
         onItemClickListener = listener
     }
@@ -69,10 +62,7 @@ class LastMoviesAdapter @Inject constructor() :
         diffUtils.dispatchUpdatesTo(this)
     }
 
-    class MoviesDiffUtils(
-        private val oldItem: List<ResponseMoviesList.Data>,
-        private val newItem: List<ResponseMoviesList.Data>
-    ) : DiffUtil.Callback() {
+    class MoviesDiffUtils(private val oldItem: List<ResponseMoviesList.Data>, private val newItem: List<ResponseMoviesList.Data>) : DiffUtil.Callback() {
         override fun getOldListSize(): Int {
             return oldItem.size
         }

@@ -8,21 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.topmovies.databinding.ItemHomeMoviesLastBinding
 import com.example.topmovies.db.MovieEntity
-import com.example.topmovies.models.home.ResponseMoviesList
 import javax.inject.Inject
 
-class FavoriteAdapter @Inject constructor() :
-    RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
-
+class FavoriteAdapter @Inject constructor() : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
+    //Binding
     private lateinit var binding: ItemHomeMoviesLastBinding
     private var moviesList = emptyList<MovieEntity>()
+    private var onItemClickListener: ((MovieEntity) -> Unit)? = null
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): FavoriteAdapter.ViewHolder {
-        binding =
-            ItemHomeMoviesLastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAdapter.ViewHolder {
+        binding = ItemHomeMoviesLastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder()
     }
 
@@ -34,7 +29,6 @@ class FavoriteAdapter @Inject constructor() :
     override fun getItemCount() = moviesList.size
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
-
         @SuppressLint("SetTextI18n")
         fun bindItems(item: MovieEntity) {
             binding.apply {
@@ -55,10 +49,11 @@ class FavoriteAdapter @Inject constructor() :
             }
         }
     }
-    private var onItemClickListener: ((MovieEntity) -> Unit)? = null
+
     fun setOnItemClickListener(listener: (MovieEntity) -> Unit) {
         onItemClickListener = listener
     }
+
     fun setData(data: List<MovieEntity>) {
         val moviesDiffUtil = MoviesDiffUtils(moviesList, data)
         val diffUtils = DiffUtil.calculateDiff(moviesDiffUtil)

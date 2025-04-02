@@ -3,6 +3,7 @@ package com.example.topmovies.di
 import android.content.Context
 import androidx.room.Room
 import com.example.topmovies.db.MovieEntity
+import com.example.topmovies.db.MoviesDao
 import com.example.topmovies.db.MoviesDatabase
 import com.example.topmovies.utils.Constants
 import dagger.Module
@@ -15,20 +16,19 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): MoviesDatabase = Room.databaseBuilder(
+            context, MoviesDatabase::class.java, Constants.MOVIES_DATABASE
+        ).allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .build()
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
-        context, MoviesDatabase::class.java, Constants.MOVIES_DATABASE
-    ).allowMainThreadQueries()
-        .fallbackToDestructiveMigration()
-        .build()
+    fun provideDao(db: MoviesDatabase): MoviesDao = db.movieDao()
 
     @Provides
     @Singleton
-    fun provideDao(db: MoviesDatabase) = db.movieDao()
-
-    @Provides
-    @Singleton
-    fun provideEntity() = MovieEntity()
+    fun provideEntity(): MovieEntity = MovieEntity()
 }

@@ -11,13 +11,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val repository: RegisterRepository) :
-    ViewModel() {
-
+class RegisterViewModel @Inject constructor(private val repository: RegisterRepository) : ViewModel() {
     val registerUser = MutableLiveData<ResponseRegister>()
     val loading = MutableLiveData<Boolean>()
 
-    fun sendRegisterUser(body: BodyRegister) = viewModelScope.launch {
+    fun registerUser(body: BodyRegister) = viewModelScope.launch {
         loading.postValue(true)
         val response = repository.registerUser(body)
         if (response.isSuccessful) {

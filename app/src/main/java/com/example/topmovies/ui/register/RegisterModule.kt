@@ -10,8 +10,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RegisterModule {
-
     @Provides
     @Singleton
-    fun provideUserBody() = BodyRegister()
+    fun provideUserBody(): BodyRegister = BodyRegister()
 }

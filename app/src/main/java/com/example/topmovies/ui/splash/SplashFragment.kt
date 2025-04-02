@@ -22,10 +22,7 @@ class SplashFragment : Fragment() {
 
     @Inject
     lateinit var storeUserData: StoreUserData
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,14 +33,13 @@ class SplashFragment : Fragment() {
         lifecycleScope.launch {
             delay(2000)
             //Check user token
-            storeUserData.getUserToken().collect{
-                if (it.isEmpty()){
+            storeUserData.getUserToken().collect {
+                if (it.isEmpty()) {
                     findNavController().navigate(R.id.action_splashFragment_to_registerFragment)
-                }else{
+                } else {
                     findNavController().navigate(R.id.actionToHome)
                 }
             }
-
         }
     }
 }

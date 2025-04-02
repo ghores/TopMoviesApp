@@ -38,10 +38,7 @@ class DetailFragment : Fragment() {
     private val viewModel: DetailViewModel by viewModels()
     private val args: DetailFragmentArgs by navArgs()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -105,12 +102,7 @@ class DetailFragment : Fragment() {
                 if (viewModel.existsMovie(movieID)) {
                     favImg.setColorFilter(ContextCompat.getColor(requireContext(), R.color.scarlet))
                 } else {
-                    favImg.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.philippineSilver
-                        )
-                    )
+                    favImg.setColorFilter(ContextCompat.getColor(requireContext(), R.color.philippineSilver))
                 }
             }
             //Change image with click
@@ -118,15 +110,10 @@ class DetailFragment : Fragment() {
                 if (it) {
                     favImg.setColorFilter(ContextCompat.getColor(requireContext(), R.color.scarlet))
                 } else {
-                    favImg.setColorFilter(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.philippineSilver
-                        )
-                    )
+                    favImg.setColorFilter(ContextCompat.getColor(requireContext(), R.color.philippineSilver))
                 }
             }
-            //Back
+            //Back click
             backImg.setOnClickListener {
                 findNavController().navigateUp()
             }

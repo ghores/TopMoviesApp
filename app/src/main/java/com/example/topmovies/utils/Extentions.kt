@@ -7,14 +7,11 @@ fun View.showInvisible(isShown: Boolean) {
     if (isShown) {
         this.visibility = View.VISIBLE
     } else {
-        this.visibility = View.INVISIBLE
+        this.visibility = View.GONE
     }
 }
 
-fun RecyclerView.initRecycler(
-    layoutManager: RecyclerView.LayoutManager,
-    adapter: RecyclerView.Adapter<*>
-) {
+fun RecyclerView.initRecycler(layoutManager: RecyclerView.LayoutManager, adapter: RecyclerView.Adapter<*>) {
     this.layoutManager = layoutManager
     this.adapter = adapter
 }

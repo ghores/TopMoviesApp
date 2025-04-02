@@ -11,7 +11,7 @@ import com.example.topmovies.databinding.ItemDetailImagesBinding
 import javax.inject.Inject
 
 class ImagesAdapter @Inject constructor() : RecyclerView.Adapter<ImagesAdapter.ViewHolder>() {
-
+    //Binding
     private lateinit var binding: ItemDetailImagesBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesAdapter.ViewHolder {
@@ -24,10 +24,9 @@ class ImagesAdapter @Inject constructor() : RecyclerView.Adapter<ImagesAdapter.V
         holder.setIsRecyclable(false)
     }
 
-    override fun getItemCount() = differ.currentList.size
+    override fun getItemCount(): Int = differ.currentList.size
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
-
         @SuppressLint("SetTextI18n")
         fun setData(item: String) {
             binding.apply {

@@ -13,7 +13,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(private val repository: DetailRepository) : ViewModel() {
-
     //Api
     val detailMovie = MutableLiveData<ResponseDetail>()
     val loading = MutableLiveData<Boolean>()
@@ -29,7 +28,9 @@ class DetailViewModel @Inject constructor(private val repository: DetailReposito
 
     //Database
     val isFavorite = MutableLiveData<Boolean>()
-    suspend fun existsMovie(id: Int) = withContext(viewModelScope.coroutineContext) { repository.existsMovie(id) }
+    suspend fun existsMovie(id: Int): Boolean = withContext(viewModelScope.coroutineContext) {
+            repository.existsMovie(id)
+        }
 
     fun favoriteMovie(id: Int, entity: MovieEntity) = viewModelScope.launch {
         val exists = repository.existsMovie(id)

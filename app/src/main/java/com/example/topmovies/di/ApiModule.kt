@@ -18,14 +18,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
+    @Provides
+    @Singleton
+    fun provideBaseUrl(): String = Constants.BASE_URL
 
     @Provides
     @Singleton
-    fun provideBaseUrl() = Constants.BASE_URL
-
-    @Provides
-    @Singleton
-    fun provideConnectionTime() = Constants.CONNECTION_TIME
+    fun provideConnectionTime(): Long = Constants.CONNECTION_TIME
 
     @Provides
     @Singleton
@@ -33,18 +32,19 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideInterceptor() = HttpLoggingInterceptor().apply {
+    fun provideInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
     @Provides
     @Singleton
-    fun provideClient(time: Long, interceptor: HttpLoggingInterceptor) = OkHttpClient.Builder()
-        .addInterceptor(interceptor)
-        .writeTimeout(time, TimeUnit.SECONDS)
-        .readTimeout(time, TimeUnit.SECONDS)
-        .connectTimeout(time, TimeUnit.SECONDS)
-        .build()
+    fun provideClient(time: Long, interceptor: HttpLoggingInterceptor): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .writeTimeout(time, TimeUnit.SECONDS)
+            .readTimeout(time, TimeUnit.SECONDS)
+            .connectTimeout(time, TimeUnit.SECONDS)
+            .build()
 
     @Provides
     @Singleton

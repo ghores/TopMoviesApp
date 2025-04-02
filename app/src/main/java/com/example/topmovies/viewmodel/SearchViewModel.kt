@@ -11,7 +11,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(private val repository: SearchRepository) : ViewModel() {
-
     val moviesList = MutableLiveData<ResponseMoviesList>()
     val loading = MutableLiveData<Boolean>()
     val empty = MutableLiveData<Boolean>()

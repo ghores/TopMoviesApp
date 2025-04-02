@@ -1,17 +1,15 @@
 package com.example.topmovies.ui.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.topmovies.R
 import com.example.topmovies.databinding.FragmentSearchBinding
-import com.example.topmovies.ui.home.HomeFragmentDirections
 import com.example.topmovies.ui.home.adapter.LastMoviesAdapter
 import com.example.topmovies.utils.initRecycler
 import com.example.topmovies.utils.showInvisible
@@ -29,10 +27,7 @@ class SearchFragment : Fragment() {
 
     //Other
     private val viewModel: SearchViewModel by viewModels()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }

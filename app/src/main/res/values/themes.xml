@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.TopMovies" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -31,5 +31,6 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/_10mdp</item>
     </style>
+
     <style name="Theme.TopMovies" parent="Base.Theme.TopMovies" />
 </resources>

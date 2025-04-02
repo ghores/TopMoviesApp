@@ -16,8 +16,7 @@ class TopMoviesAdapter @Inject constructor() : RecyclerView.Adapter<TopMoviesAda
     private lateinit var binding: ItemHomeMoviesTopBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopMoviesAdapter.ViewHolder {
-        binding =
-            ItemHomeMoviesTopBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemHomeMoviesTopBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder()
     }
 
@@ -43,17 +42,11 @@ class TopMoviesAdapter @Inject constructor() : RecyclerView.Adapter<TopMoviesAda
     }
 
     private val differCallBack = object : DiffUtil.ItemCallback<ResponseMoviesList.Data>() {
-        override fun areItemsTheSame(
-            oldItem: ResponseMoviesList.Data,
-            newItem: ResponseMoviesList.Data
-        ): Boolean {
+        override fun areItemsTheSame(oldItem: ResponseMoviesList.Data, newItem: ResponseMoviesList.Data): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(
-            oldItem: ResponseMoviesList.Data,
-            newItem: ResponseMoviesList.Data
-        ): Boolean {
+        override fun areContentsTheSame(oldItem: ResponseMoviesList.Data, newItem: ResponseMoviesList.Data): Boolean {
             return oldItem == newItem
         }
     }

@@ -1,12 +1,11 @@
 package com.example.topmovies.ui.register
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import com.example.topmovies.R
 import com.example.topmovies.databinding.FragmentRegisterBinding
@@ -33,10 +32,7 @@ class RegisterFragment : Fragment() {
     //Other
     private val viewModel: RegisterViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -52,17 +48,14 @@ class RegisterFragment : Fragment() {
                 val password = passwordEdt.text.toString()
                 //Validation
                 if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-
                     body.name = name
                     body.email = email
                     body.password = password
-
                 } else {
-                    Snackbar.make(view, getString(R.string.fillAllFields), Snackbar.LENGTH_SHORT)
-                        .show()
+                    Snackbar.make(view, getString(R.string.fillAllFields), Snackbar.LENGTH_SHORT).show()
                 }
                 //Send data
-                viewModel.sendRegisterUser(body)
+                viewModel.registerUser(body)
                 //Loading
                 viewModel.loading.observe(viewLifecycleOwner) { isShown ->
                     if (isShown) {
